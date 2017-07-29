@@ -90,6 +90,6 @@ it('shouldnt accept an invalid id', () => {
 	};
 
 	expect(() => {
-		const test = new Trade(data);
+		const test = new Trade(<any> data);
 	}).toThrow('Not a valid id');
 });

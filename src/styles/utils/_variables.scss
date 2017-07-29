@@ -1,0 +1,154 @@
+//-------------------------------------
+// @VARIABLES
+//-------------------------------------
+
+/// Base size for typography
+/// @group modular scale
+/// @type {number}
+$base-size: 1rem;
+
+/// Base ratio to calculate font scale
+/// @group modular scale
+/// @type {number}
+$base-size-ratio: (4 / 3);
+
+/// Base ratio to calculate `line-height` and spacing scale
+/// @group modular scale
+/// @type {number}
+$base-height-ratio: 1.5;
+
+/// Base height for `line-height` and spacing
+/// @group modular scale
+/// @type {number}
+$base-height: $base-size * $base-height-ratio;
+
+/// @group spacing
+/// @require {variable} $base-height
+$spacing-quarter: $base-height / 3;
+/// @group spacing
+/// @require {variable} $base-height
+$spacing-third: $base-height / 3;
+/// @group spacing
+/// @require {variable} $base-height
+$spacing-half: $base-height / 2;
+/// @group spacing
+/// @require {variable} $base-height
+$spacing-two-thirds: $base-height / 1.5;
+/// @group spacing
+/// @require {variable} $base-height
+$spacing-whole: $base-height;
+/// @group spacing
+/// @require {variable} $base-height
+$spacing-one-half: $base-height * 1.25;
+/// @group spacing
+/// @require {variable} $base-height
+$spacing-double: $base-height * 2;
+/// @group spacing
+/// @require {variable} $base-height
+$spacing-triple: $base-height * 3;
+/// @group spacing
+/// @require {variable} $base-height
+$spacing-quad: $base-height * 4;
+
+/// @group colors
+/// @type Color
+$color-background-light: rgba(217,217,217,0.18);
+/// @group colors
+/// @type Color
+$color-background-dark: rgba(227,225,225,1);
+/// @group colors
+/// @type Color
+$color-inset-shadow: rgba(223,223,223,0.4);
+/// @group colors
+/// @type Color
+$color-border-gray: rgba(232,232,232,1);
+$color-border-light: rgba(151,151,151,0.18);
+$color-border-dark: rgba(151,151,151,1);
+/// @group colors
+/// @type Color
+$color-red-l: rgba(255,0,0,0.41);
+$color-red: rgba(251,147,147,1);
+/// @group colours
+/// @type Color
+$color-gray-xl: #e1e3e1;
+$color-gray-xxl: #E7E5E5;
+/// @group colours
+/// @type Color
+$color-gray-d: #5F5E5E;
+/// @group colours
+/// @type Color
+$color-dark: #3C3C3C;
+/// @group colours
+/// @type Color
+$color-light: #F7F7F7;
+$color-light-d: #FBFBFB;
+
+
+$color-green: rgba(164,239, 222, 1);
+
+$default-border-radius: 2px;
+
+
+
+/// Font Family Sans
+/// @group typography
+/// @type {list}
+$font-family-sans: Avenir, 'Open Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+/// Font Family Serif
+/// @group typography
+/// @type {list}
+$font-family-serif: "kepler-std-display", Georgia, 'Times New Roman', Times, serif;
+/// Font Family Mono
+/// @group typography
+/// @type {list}
+$font-family-mono: Inconsolata, 'Courier New', Courier, monospace;
+/// Font Family for headings
+/// @group typography
+/// @require {variable} $font-family-sans
+/// @type {list}
+$font-family-heading: $font-family-serif;
+/// Font Family for paragraphs
+/// @require {variable} $font-family-sans
+/// @group typography
+/// @type {list}
+$font-family-paragraph: $font-family-sans;
+
+/// Breakpoints
+/// @group responsive
+/// @type {map}
+$breakpoints: (
+  small: 320px,
+  medium: 768px,
+  large: 1024px,
+  wide: 1440px
+);
+
+/// Shorter transition
+/// @group transitions
+/// @type {list}
+$transition-xs: all ease 0.15s;
+/// Short transition
+/// @group transitions
+/// @type {list}
+$transition-s: all ease 0.25s;
+/// Medium transition
+/// @group transitions
+/// @type {list}
+$transition-m: all ease 0.4s;
+/// Long transition
+/// @group transitions
+/// @type {list}
+$transition-l: all ease 0.7s;
+/// Longer transition
+/// @group transitions
+/// @type {list}
+$transition-xl: all ease 1s;
+
+/// Relative or absolute URL where all assets are served from
+/// @group assets
+/// @type {string}
+/// @example scss - When using a CDN
+///   $base-url: 'http://cdn.example.com/assets/';
+$base-url: '/assets/';
+
+$header-height: 50px;

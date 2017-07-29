@@ -1,4 +1,4 @@
-import * as Trades from './trades.actions';
+import { TradeAction, ADD_TRADE, ActionTypes } from './trades.actions';
 import { Trade } from './trade.model';
 
 export interface State {
@@ -15,14 +15,15 @@ const initialState: State = {
 
 export function reducer(
 	state: State = initialState,
-	action: Trades.Actions
+	action: TradeAction
 ): State {
 	switch (action.type) {
-		case Trades.ActionTypes.LOAD:
+		case ActionTypes.LOAD:
 			return Object.assign({}, state, {
 				loading: true
 			});
-		case Trades.ActionTypes.ADD:
+		case ActionTypes.ADD:
+			console.log(action);	
 			return Object.assign({}, state, {
 				entities: [...state.entities, action.payload]
 			});	
