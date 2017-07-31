@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
 
-import ShoppingList from './components/shopping-list/shopping-list';
+import TradeMap from './containers/graphs/trade-map-container';
 import TradeForm from './containers/forms/trade-form.container';
+import TradeFeed from './containers/graphs/trade-feed-container';
+
 import configureStore from './stores/configureStore';
 import './App.css';
 
@@ -12,13 +14,12 @@ const store = configureStore({});
 
 class App extends React.Component<{}, {}> {
 	render() {
-		const listItems = ['Hello', 'Whatup'];
 		return (
 			<Provider store={store}>
 				<div className="App">
-					<div className="App-header">
-						<TradeForm />
-					</div>
+					<TradeMap />
+					<TradeFeed />
+					<TradeForm />
 				</div>
 			</Provider>
 		);

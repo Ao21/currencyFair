@@ -1,0 +1,97 @@
+@import "../../../styles/utils/utils";
+
+.trade-form {
+	padding: $spacing-whole;
+	display: flex;
+	flex-flow: column nowrap;
+	margin-bottom: 0;
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	border-right: 1px solid rgba(0, 0, 0, 0.1);
+	border-top-right-radius: 21px;
+	section {
+		display: flex;
+	}
+	&__group {
+		display: flex;
+		flex-flow: column nowrap;
+		margin-right: $spacing-half;
+		flex: 1 1 auto;
+		&--horizontal {
+			display: flex;
+			flex: 1 1 auto;
+			flex-flow: row nowrap;
+		}
+	}
+
+	&__field {
+		flex: 1 1 auto;
+		display: flex;
+		margin-bottom: $spacing-half;
+		label {
+			margin-bottom: $spacing-quarter;
+		}
+	}
+
+	&__field--horizontal {
+		flex: 1 1 auto;
+		display: flex;
+		margin: 0 $spacing-half;
+		flex-flow: column nowrap;
+		margin-bottom: 0;
+
+		&:last-child {
+			margin-right: 0;
+		}
+
+		label {
+			margin-bottom: $spacing-half;
+		}
+
+		input {
+			padding: $spacing-quarter;
+			height: 40px;
+		}
+		select {
+			height: 40px;
+		}
+	}
+
+	&__actions {
+		justify-content: flex-end;
+	}
+
+	label {
+		min-width: 75px;
+	}
+
+	input.is-errored {
+		border-color: rgba(227, 95, 95, 0.7);
+		box-shadow: none;
+		border-style: solid;
+	}
+
+	button {
+		flex: 0 0 auto;
+		justify-content: flex-end;
+		background-color: black;
+		padding: $spacing-whole $spacing-double;
+		color: white;
+		border: none;
+		box-shadow: none;
+		border-radius: 5px;
+
+		transition: 0.15s all cubic-bezier(0.165, 0.84, 0.44, 1);
+
+		&:hover {
+			opacity: 0.8;
+		}
+		&[disabled]{
+			background-color: rgba(0,0,0,0.3);
+			color: rgba(0,0,0,0.1);
+
+			&:hover {
+				opacity: 1;
+			}
+		}
+	}
+}

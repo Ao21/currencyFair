@@ -5,12 +5,14 @@ export interface State {
 	loaded: boolean;
 	loading: boolean;
 	entities: Trade[];
+	rankings: any;
 }
 
 const initialState: State = {
 	loaded: false,
 	loading: false,
-	entities: []
+	entities: [],
+	rankings: {}
 };
 
 export function reducer(
@@ -22,13 +24,27 @@ export function reducer(
 			return Object.assign({}, state, {
 				loading: true
 			});
-		case ActionTypes.ADD:
-			console.log(action);	
+		case ActionTypes.ADD:	
+			const rankingUpdate = `${action.payload.currencyFrom}/${action
+				.payload.currencyTo}`;
 			return Object.assign({}, state, {
+				rankings: Object.assign({}, state.rankings, {
+					[rankingUpdate]: state.rankings[rankingUpdate]
+						? state.rankings[rankingUpdate] + 1
+						: 1
+				}),
 				entities: [...state.entities, action.payload]
-			});	
+			});
 		default: {
 			return state;
 		}
 	}
 }
+
+export const getAllTrades = (state: State) => {
+	return state.entities;
+};
+
+export const getAllRankings = (state: State) => {
+	return state.rankings;
+};

@@ -1,0 +1,65 @@
+.trade-form {
+  padding: 1.5rem;
+  display: flex;
+  flex-flow: column nowrap;
+  margin-bottom: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  border-top-right-radius: 21px; }
+  .trade-form section {
+    display: flex; }
+  .trade-form__group {
+    display: flex;
+    flex-flow: column nowrap;
+    margin-right: 0.75rem;
+    flex: 1 1 auto; }
+    .trade-form__group--horizontal {
+      display: flex;
+      flex: 1 1 auto;
+      flex-flow: row nowrap; }
+  .trade-form__field {
+    flex: 1 1 auto;
+    display: flex;
+    margin-bottom: 0.75rem; }
+    .trade-form__field label {
+      margin-bottom: 0.5rem; }
+  .trade-form__field--horizontal {
+    flex: 1 1 auto;
+    display: flex;
+    margin: 0 0.75rem;
+    flex-flow: column nowrap;
+    margin-bottom: 0; }
+    .trade-form__field--horizontal:last-child {
+      margin-right: 0; }
+    .trade-form__field--horizontal label {
+      margin-bottom: 0.75rem; }
+    .trade-form__field--horizontal input {
+      padding: 0.5rem;
+      height: 40px; }
+    .trade-form__field--horizontal select {
+      height: 40px; }
+  .trade-form__actions {
+    justify-content: flex-end; }
+  .trade-form label {
+    min-width: 75px; }
+  .trade-form input.is-errored {
+    border-color: rgba(227, 95, 95, 0.7);
+    box-shadow: none;
+    border-style: solid; }
+  .trade-form button {
+    flex: 0 0 auto;
+    justify-content: flex-end;
+    background-color: black;
+    padding: 1.5rem 3rem;
+    color: white;
+    border: none;
+    box-shadow: none;
+    border-radius: 5px;
+    transition: 0.15s all cubic-bezier(0.165, 0.84, 0.44, 1); }
+    .trade-form button:hover {
+      opacity: 0.8; }
+    .trade-form button[disabled] {
+      background-color: rgba(0, 0, 0, 0.3);
+      color: rgba(0, 0, 0, 0.1); }
+      .trade-form button[disabled]:hover {
+        opacity: 1; }

@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { connect, Dispatch } from 'react-redux';
-import { AddTrade } from '../../stores/trades/trades.actions';
+import { AddTrade } from '../../../stores/trades/trades.actions';
 
 import * as moment from 'moment';
 
-import { CurrencyOptions } from '../../core/contants/defaults';
+import { CurrencyOptions } from '../../../core/contants/defaults';
+import { COUNTRY_NAME_LIST } from '../../../core/contants/country-list';
 import './trade-form.css';
 
 interface Props {
@@ -14,20 +14,18 @@ interface Props {
 interface State {
 	currencyFrom?: string;
 	currencyTo?: string;
+	originatingCountry: string;
 	sell?: number;
 	buy?: number;
 	rate?: number;
 
-	touched?: {
-		from: boolean;
-		to: boolean;
+	touched: {
 		sell: boolean;
 		buy: boolean;
 	};
 }
 
 function validate(sell: any, buy: any) {
-	console.log(buy, buy < 2);
 	return {
 		sell: sell < 14.99,
 		buy: buy < 2
@@ -42,9 +40,8 @@ export default class TradeForm extends React.Component<Props, State> {
 			sell: 0,
 			buy: 0,
 			rate: 0,
+			originatingCountry: 'FR',
 			touched: {
-				from: false,
-				to: false,
 				sell: false,
 				buy: false
 			}
@@ -68,31 +65,48 @@ export default class TradeForm extends React.Component<Props, State> {
 		});
 	}
 
+	handleBlur = (event: any) => {
+		const target = event.target;
+		const name = target.name;
+		const touched = Object.assign({}, this.state.touched, {
+			[name]: true
+		});
+		this.setState({
+			touched: touched
+		});
+	}
+
 	handleSubmit = (event: any) => {
 		const genericSettings = {
 			userId: 34343,
-			created: '24-JAN-15 10:27:44',
-			originatingCountry: 'FR'
+			created: moment().format('DD-MMM-YY hh:mm:ss')
 		};
 		const update = Object.assign({}, this.state, genericSettings);
-		console.log(update);
 		this.props.addTrade(update);
 	}
 
 	render() {
 		const errors = validate(this.state.sell, this.state.buy);
-		
+
 		const currencyOptions = CurrencyOptions.map((item, index) =>
 			<option key={item.id} value={item.id}>
 				{item.value}
 			</option>
 		);
 
+		const countryOptions = COUNTRY_NAME_LIST.sort((a: any, b: any) => {
+			return a.country.localeCompare(b.country);
+		}).map((item: any, index) =>
+			<option key={item.idNumber} value={item.id}>
+				{item.country}
+			</option>
+		);
+
 		return (
 			<form className="trade-form">
-				<section>
+				<section className="trade-form__form">
 					<div className="trade-form__group">
-						<div className="trade-form__field">
+						<div id="currencyFromField" className="trade-form__field">
 							<label>From</label>
 							<select
 								name="currencyFrom"
@@ -102,7 +116,7 @@ export default class TradeForm extends React.Component<Props, State> {
 								{currencyOptions}
 							</select>
 						</div>
-						<div className="trade-form__field">
+						<div id="currencyToField" className="trade-form__field">
 							<label>To</label>
 							<select
 								name="currencyTo"
@@ -114,35 +128,49 @@ export default class TradeForm extends React.Component<Props, State> {
 						</div>
 					</div>
 					<div className="trade-form__group--horizontal">
-						<div className="trade-form__field">
+						<div id="sellField" className="trade-form__field--horizontal">
 							<label>Sell</label>
 							<input
 								type="number"
 								name="sell"
-								className={errors.sell ? 'is-errored' : ''}
+								onBlur={this.handleBlur}
+								className={errors.sell && this.state.touched.sell ? 'is-errored' : ''}
 								value={this.state.sell}
 								onChange={this.handleInputEvent}
 							/>
 						</div>
-						<div className="trade-form__field">
+						<div id="buyField" className="trade-form__field--horizontal">
 							<label>Buy</label>
 							<input
 								type="number"
 								name="buy"
-								className={errors.buy ? 'is-errored' : ''}
+								onBlur={this.handleBlur}
+								className={errors.buy && this.state.touched.buy ? 'is-errored' : ''}
 								value={this.state.buy}
 								onChange={this.handleInputEvent}
 							/>
 						</div>
-					</div>
-					<div className="trade-form__group">
-						<h1>
-							{this.state.rate}%
-						</h1>
+						<div id="countryField" className="trade-form__field--horizontal">
+							<label>Originating Country</label>
+							<select
+								name="originatingCountry"
+								value={this.state.originatingCountry}
+								onChange={this.handleInputEvent}
+							>
+								{countryOptions}
+							</select>
+						</div>
 					</div>
 				</section>
-				<section>
-					<button onClick={this.handleSubmit} type="button">submit</button>
+				<section className="trade-form__actions">
+					<button
+						id="saveButton"	
+						disabled={errors.sell || errors.buy}
+						onClick={this.handleSubmit}
+						type="button"
+					>
+						Add
+					</button>
 				</section>
 			</form>
 		);

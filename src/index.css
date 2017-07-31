@@ -499,9 +499,10 @@ body {
 
 h1, h2, h3,
 h4, h5, h6 {
-  font-family: "kepler-std-display", Georgia, "Times New Roman", Times, serif;
+  font-family: Avenir, "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-weight: 400;
-  color: inherit; }
+  color: inherit;
+  margin-bottom: 0; }
 
 app-cms h1, app-cms h2, app-cms h3, app-cms h4, app-cms h5, app-cms h6 {
   font-family: Avenir, "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; }

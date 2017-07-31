@@ -1,0 +1,10 @@
+.trade-item {
+  padding: 0.75rem 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+  .trade-item header h1 {
+    margin: 0; }
+  .trade-item__details {
+    display: flex; }
+  .trade-item__detail {
+    flex: 1 1 33.3%; }

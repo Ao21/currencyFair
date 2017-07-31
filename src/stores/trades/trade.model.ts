@@ -303,7 +303,7 @@ export class Trade {
 		this.userId = this.checkId(trade.userId);
 		this.currencyFrom = this.checkCurrency(trade.currencyFrom);
 		this.currencyTo = this.checkCurrency(trade.currencyTo);
-		this.sell = this.checkNumber(trade.sell);
+		this.sell = this.checkMinSell(this.checkNumber(trade.sell));
 		this.buy = this.checkNumber(trade.buy);
 		this.rate = this.checkNumber(trade.rate);
 		this.created = this.checkDate(trade.created as string); 
@@ -331,6 +331,22 @@ export class Trade {
 			return CountryCode[countryStr];	
 		} else {
 			throw new Error('This is not a supported country code');
+		}
+	}
+
+	private checkMinSell(sell: number) {
+		if (sell >= 14.99) {
+			return sell;
+		} else {
+			throw new Error('This amount is too low');
+		}
+	}
+
+	private checkMinBuy(buy: number) {
+		if (buy >= 2) {
+			return buy;
+		} else {
+			throw new Error('This amount is too low');
 		}
 	}
 

@@ -2,7 +2,7 @@
    Typography
    ========================================================================== */
 
-@import "../utils/mixins";
+@import "../utils/utils";
 
 body {
   font-family: $font-family-sans;
@@ -14,6 +14,7 @@ h4, h5, h6 {
   font-family: $font-family-heading;
   font-weight: 400;
   color: inherit;
+  margin-bottom: 0;
 }
 
 app-cms h1, app-cms h2, app-cms h3, app-cms h4, app-cms h5, app-cms h6 {

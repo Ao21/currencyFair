@@ -1,4 +1,4 @@
-import TradeForm from '../../components/trade-form/trade-form';
+import TradeForm from '../../components/features/trade-form/trade-form';
 import { addTrade, TradeAction } from '../../stores/trades/trades.actions';
 
 import { Trade } from '../../stores/trades/trade.model';
